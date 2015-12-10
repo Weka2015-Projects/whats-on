@@ -1,29 +1,107 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      .map {
-        width: 500px;
-        height: 400px;
-      }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script>
-      function initialize() {
-        var mapCanvas = document.getElementById('map');
-        var mapOptions = {
-          center: new google.maps.LatLng(-41.2889, 174.7772),
-          zoom: 14,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        var map = new google.maps.Map(mapCanvas, mapOptions)
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-  </head>
-  <body>
-    <div id="map" class="map"></div>
-  </body>
+<head>
+  <style>
+    .map {
+      width: 500px;
+      height: 400px;
+    }
+  </style>
+  <link rel ="stylesheet" href = "styles.css">
+</head>
+<body>
+  <div id="map" class="map"></div>
+  <div class="wrapper">
+    <div class="main">
+      <div class="lead">
+        <h2 class="prefix"> Weather in </h2> 
+        <h1>
+          <span class="location"></span>
+        </h1>
+        <h2 class="suffix"> at 
+          <span class="time"></span> on 
+          <span class="date"></span>
+        </h2>
+      </div>
+      <div class="content">
+       <ul class="list">
+        <li class="content-main">
+          <p class="subheading"> Temperature</p>
+          <h1 class="li">
+            <i class="wi" id="temperature"></i>
+            <span class="temp"></span> 
+            <span class="hide tempImp"></span>
+          </h1>
+        </li>
+        <li class="content-main">
+          <p class="subheading">Wind</p>
+          <h1 class="li">
+            <i class="wi" id="windIcon"></i>
+            <span class="wind"></span>
+          </h1>
+        </li>
+        <li class="content-main">
+          <p class="subheading"> Humidity</p>
+          <h1 class="li">
+            <i class="wi wi-humidity"></i> 
+            <span class ="humidity"></span>
+          </h1>
+        </li>
+        <li class="content-main">
+          <p class="subheading"> Pressure </p>
+          <h1 class="li"><i class="wi wi-barometer"></i>
+            <span class="pressure"></span>
+          </h1>
+        </li>
+        <li class="content-main">
+          <p class="subheading">Maximum Temperature</p>
+          <h1 class="li">
+            <i class="wi wi-thermometer"></i>
+            <span class="tempMax"></span>
+            <span class="tempImpMax hide">
+            </h1>
+          </li>
+          <li class="content-main">
+           <p class="subheading">Sunrise</p>
+           <h1 class="dateTime"><i class="wi wi-sunrise"></i>
+            <span class="sunrise"></span>
+          </h1>
+        </li>
+        <li class="content-main">
+          <p class="subheading">Sunset</p>
+          <h1 class="dateTime">
+            <i class="wi wi-sunset"></i>
+            <span class="sunset"></span>
+          </h1>
+        </li>
+        <li class="content-main">
+          <p class="subheading"> Minimum Temperature</p>
+          <h1 class="li">
+            <i class="wi wi-thermometer-exterior"></i>
+            <span class="tempMin"></span>
+            <span class="tempImpMin hide"></span>
+          </h1>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script src = "https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+<script src = "weather.js"> </script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+  function initialize() {
+    var mapCanvas = document.getElementById('map');
+    var mapOptions = {
+      center: new google.maps.LatLng(-41.2889, 174.7772),
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions)
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</body>
 </html>
 
 
