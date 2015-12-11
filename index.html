@@ -7,6 +7,9 @@
       height: 400px;
     }
   </style>
+  <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.5/css/weather-icons.min.css">
+  <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.5/css/weather-icons-wind.min.css">
+
   <link rel ="stylesheet" href = "styles.css">
 </head>
 <body>
@@ -28,9 +31,8 @@
         <li class="content-main">
           <p class="subheading"> Temperature</p>
           <h1 class="li">
-            <i class="wi" id="temperature"></i>
+            <i class="wi wi-temperature" id="temperature"></i>
             <span class="temp"></span> 
-            <span class="hide tempImp"></span>
           </h1>
         </li>
         <li class="content-main">
@@ -49,8 +51,9 @@
         </li>
         <li class="content-main">
           <p class="subheading"> Pressure </p>
-          <h1 class="li"><i class="wi wi-barometer"></i>
-            <span class="pressure"></span>
+          <h1 class="li">
+          <i class="wi wi-barometer"></i>
+          <span class="pressure"></span>
           </h1>
         </li>
         <li class="content-main">
@@ -58,7 +61,6 @@
           <h1 class="li">
             <i class="wi wi-thermometer"></i>
             <span class="tempMax"></span>
-            <span class="tempImpMax hide">
             </h1>
           </li>
           <li class="content-main">
@@ -86,21 +88,22 @@
     </div>
   </div>
 </div>
+
 <script src = "https://code.jquery.com/jquery-2.1.4.min.js"> </script>
 <script src = "weather.js"> </script>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
-<script>
-  function initialize() {
-    var mapCanvas = document.getElementById('map');
-    var mapOptions = {
-      center: new google.maps.LatLng(-41.2889, 174.7772),
-      zoom: 14,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    var map = new google.maps.Map(mapCanvas, mapOptions)
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+ <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(-41.2889, 174.7772),
+          zoom: 14,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </body>
 </html>
 

@@ -1,4 +1,5 @@
 'use strict'
+
 const getWeather = (lat, lon) => {
   $.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric' + '&appid=2de143494c0b295cca9337e1e96b00e0',
     (weather) => {
@@ -37,56 +38,27 @@ const getWeather = (lat, lon) => {
       })
       let icon = iconName[0]
       let windIcon = 'wi-wind towards-' + weather.wind.deg + '-deg'
+      console.log(icon)
       let sunrise = new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-au')
       let sunset = new Date(weather.sys.sunset * 1000).toLocaleTimeString('en-au')
       let time = new Date(weather.dt * 1000).toLocaleTimeString('en-au')
-      let date = new Date(weather.dt * 1000).toLocaleDateString('EN-AU')
+      let date = new Date(weather.dt * 1000).toLocaleDateString('en-au')
 
       $('.temp').empty().append(temp + '&deg;C')
       $('.tempMax').empty().append(tempMax + '&deg;C')
       $('.tempMin').empty().append(tempMin + '&deg;C')
-      $('#temperature').removeClass().addClass('i').addClass(icon)
+      $('#temperature').removeClass().addClass('wi').addClass(icon)
       $('.location').empty().append(location)
       $('.time').empty().append(time)
       $('.date').empty().append(date)
       $('.sunrise').empty().append(sunrise)
       $('.sunset').empty().append(sunset)
-      $('#windIcon').removeClass().addClass('wi').addClass(windIcon)
+      $('#windIcon').removeClass().addClass("wi").addClass(windIcon);
       $('.wind').empty().append(wind + ' m/s')
       $('.humidity').empty().append(humidity + '%')
       $('.pressure').empty().append(pressure + ' kPA')
-      if (temp <= 10) {
-        $('.sidebar').css({
-          backgroundColor: '#46A8BF'
-        })
-        $('h1').css({
-          color: '#46A8BF'
-        })
-        $('button').css({
-          color: '#46A8BF'
-        })
-      } else if (temp >= 30) {
-        $('.sidebar').css({
-          backgroundColor: '#AD3434'
-        })
-        $('h1').css({
-          color: '#AD3434'
-        })
-        $('button').css({
-          color: '#AD3434'
-        })
-      } else {
-        $('.sidebar').css({
-          backgroundColor: '#644172'
-        })
-        $('h1').css({
-          color: '#644172'
-        })
-        $('button').css({
-          color: '#644172'
-        })
-      }
-    }, 'json')
+      , 'json'
+    })
 }
 
 const getLocation = () => {
@@ -97,24 +69,8 @@ const getLocation = () => {
 
 getLocation()
 
-$('#sydney').click(() => {
-  getWeather(-33.8650, 151.2094)
-})
-$('#adelaide').click(() => {
-  getWeather(-34.9290, 138.6010)
-})
-$('#melbourne').click(() => {
-  getWeather(-37.8136, 144.9631)
-})
-$('#deathvalley').click(() => {
-  getWeather(36.246944, -116.816944)
-})
-$('#helsinki').click(() => {
-  getWeather(60.1708, 24.9375)
-})
-
 const customWeather = () => {
-  let userlat = (document.getElementById('lattude').value)
+  let userlat = (document.getElementById('latiude').value)
   let userlong = (document.getElementById('longitude').value)
   if (userlong) {
     getWeather(userlat, userlong)
