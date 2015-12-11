@@ -56,6 +56,10 @@ h1 {
   width:100%;
 }
 
+.img {
+  float:left;
+}
+
 .suffix {
   text-align:right;
   color:#999;
