@@ -1,8 +1,14 @@
 {
   "name": "whats-on",
   "version": "1.0.0",
+
   "description": "whats-on",
   "main": "map.js",
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "jspm": "^0.16.15"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,4 +32,5 @@
       "core-js": "npm:core-js@^1.1.4"
     }
   }
+
 }
