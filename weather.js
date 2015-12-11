@@ -70,7 +70,7 @@ const getLocation = () => {
 }
 
 let getPhoto = (cityState, lat, lon) => {
-  let flickrApiKey = "aa41a33c9e079dce5cd80e16b5a486f3"
+  let flickrApiKey = ""
   $.getJSON('https://api.flickr.com/services/rest/?', {
       method: "flickr.photos.search",
       api_key: flickrApiKey,
@@ -80,8 +80,8 @@ let getPhoto = (cityState, lat, lon) => {
       format: "json",
       nojsoncallback: 1
     })
-    .done(function(data) {
-      $.each(data.photos.photo, function(i, photo) {
+    .done( (data) => {
+      $.each(data.photos.photo, (i, photo) => {
         let imgCol = '.img-' + i
         let image = document.createElement("IMG")
         image.title = photo.title
