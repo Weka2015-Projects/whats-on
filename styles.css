@@ -55,6 +55,24 @@ h1 {
   width:100%;
 }
 
+.grid {
+  max-width: 100%;
+
+}
+
+.grid span {
+  max-height: 200px;
+  overflow: hidden;
+}
+
+
+ .img {
+  float: left;
+  max-width: 25%;
+  overflow: hidden;
+
+}
+
 .suffix {
   text-align:right;
   color:#999;

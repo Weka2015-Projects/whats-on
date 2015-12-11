@@ -64,7 +64,35 @@ const getWeather = (lat, lon) => {
 const getLocation = () => {
   $.get('http://ip-api.com/json', (loc) => {
     getWeather(loc.lat, loc.lon, loc.region)
-  }, 'json')
+    let cityState = loc.city + loc.regionName
+    getPhoto(cityState, loc.lat, loc.lon)
+   }, 'json')
+}
+
+let getPhoto = (cityState, lat, lon) => {
+  let flickrApiKey = "aa41a33c9e079dce5cd80e16b5a486f3"
+  $.getJSON('https://api.flickr.com/services/rest/?', {
+      method: "flickr.photos.search",
+      api_key: flickrApiKey,
+      text: cityState,
+      tags: cityState,
+      sort: "relevance",
+      format: "json",
+      nojsoncallback: 1
+    })
+    .done(function(data) {
+      $.each(data.photos.photo, function(i, photo) {
+        let imgCol = '.img-' + i
+        let image = document.createElement("IMG")
+        image.title = photo.title
+        image.setAttribute('class', 'img-responsive')
+        image.src = "http://farm"+photo.farm+".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg"
+        $(imgCol).html(image)
+        if (i === 10) {
+          return false
+        }
+      })
+    })
 }
 
 getLocation()
@@ -72,7 +100,8 @@ getLocation()
 const customWeather = () => {
   let userlat = (document.getElementById('latiude').value)
   let userlong = (document.getElementById('longitude').value)
-  if (userlong) {
+  if (userlong && userlat) {
     getWeather(userlat, userlong)
+    getPhoto(userlat, userlong)
   }
 }
